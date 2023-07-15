@@ -17,7 +17,7 @@ const Products = () => {
         const response = await axios.get('https://fakestoreapi.com/products', {
           signal: controller.signal,
         });
-        setData(response.data);
+        setData(response.data); /* Plaats de server response in de setData state */
       } catch (e) {
         console.error(e);
         // if (controller.signal.aborted) return;
@@ -48,7 +48,7 @@ const Products = () => {
         {data.map((product) => {
           return (
             <li className="product-card" key={product.id}>
-              <Link to={`/products/${product.id}`}>
+              <Link to={`/products/${product.id}`}> /* Secret sauce: Link naar productpagina */ 
                 <div>
                   <img src={product.image} alt={product.title} />
                   <h3>{product.title.slice(0, 25)}</h3>

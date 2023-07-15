@@ -9,6 +9,7 @@ const ProductPage = () => {
 
   const { id } = useParams();
 
+  // De data moet uitzichzelf laden tijdens mounting
   useEffect(() => {
     const controller = new AbortController();
 
@@ -22,7 +23,7 @@ const ProductPage = () => {
             signal: controller.signal,
           }
         );
-        setData(response.data);
+        setData(response.data); /* ---> data state */
       } catch (e) {
         console.error(e);
         // if (controller.signal.aborted) return;
@@ -45,7 +46,7 @@ const ProductPage = () => {
     // Dependency array was eigenlijk: []
   }, []);
 
-  const { title, image, price, description } = data;
+  const { title, image, price, description } = data; /* SubWay broodje. Data = menukaart en state object */
   return (
     <>
       {loading && <p>Loading...</p>}
